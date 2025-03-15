@@ -10,6 +10,8 @@ import { baseConfig, route } from "@/constant/base-config";
 import { ThemeSwitch } from "./theme-switch";
 import { useIsMount } from "@/hooks/use-is-mount";
 import { Avatar } from "./avatar";
+import { GithubIcon } from "@/assets";
+import { Button } from "./ui/button";
 
 export const Navbar = () => {
   const scroll = useScroll(() => document);
@@ -87,6 +89,15 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center justify-end gap-2 sm:flex-none">
+          <Button
+            variant="outline"
+            className="px-3"
+            onClick={() => {
+              window.open(baseConfig.openUrl, "_blank");
+            }}
+          >
+            <GithubIcon />
+          </Button>
           <ThemeSwitch />
         </div>
       </div>

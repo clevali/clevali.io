@@ -39,7 +39,7 @@ export function ThemeSwitch({
   if (!isMount) return null;
   return (
     <Button
-      className={cn("flex items-center ", className)}
+      className={cn("flex items-center px-3", className)}
       variant="outline"
       ref={ref}
       id="airplane-mode"

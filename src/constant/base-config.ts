@@ -16,6 +16,7 @@ export const baseConfig: BaseConfig = {
   motto: "只要开始追赶，就已经走在胜利的路上",
   keywords: ["clevali", "blog", "前端", "nextjs", "学习笔记", "程序员"],
   authors: "clevali",
+  openUrl: "https://github.com/clevali/clevali.io",
   email: "1454468023@qq.com",
   authorsCN: "两眼半",
   authorsUrl: "https://github.com/clevali",

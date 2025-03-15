@@ -6,6 +6,7 @@ export interface BaseConfig {
   name: string;
   authorsCN: string;
   description: string;
+  openUrl: string;
   apologize: string;
   motto: string;
   email: string;
