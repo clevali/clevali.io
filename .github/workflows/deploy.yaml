@@ -1,0 +1,55 @@
+name: Docker Image CI
+
+on:
+  push: # push 时触发ci
+    branches: [master] # 作用于main分支
+  # pull_request:
+  #   branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取main分支代码
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # 制作docker镜像并推送到阿里云容器镜像服务
+      - name: build and push docker image
+        run: |
+          echo ${{ secrets.ALIYUN_DOCKER_PASSWORD }} | docker login crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com --username ${{ secrets.ALIYUN_DOCKER_USERNAME }} --password-stdin
+          docker image build -t blog:latest .
+          docker tag blog crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
+          docker push crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
+          docker logout
+      # 登录远程服务器，拉取镜像，制作并重启容器
+      # https://github.com/marketplace/actions/remote-ssh-commands
+      - name: ssh remote deploy
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /
+            echo -e "1.docker login start==>"
+             echo ${{ secrets.ALIYUN_DOCKER_PASSWORD }} | docker login crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com --username ${{ secrets.ALIYUN_DOCKER_USERNAME }} --password-stdin
+            echo -e "2.docker stop blog container==>"
+            docker container stop clevali-blog
+
+            echo -e "3.docker conatainer rm==>"
+            docker container rm clevali-blog
+
+            echo -e "4.docker image rm==>"
+            docker image rm crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest -f
+
+            echo -e "5.docker pull==>"
+            docker pull crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
+
+            echo -e "6.docker container create and start==>"
+            docker container run -d -p 3000:3000 --name clevali-blog crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
+
+            echo -e "7.docker logout==>"
+            docker logout
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.PASSWORD }}
+
