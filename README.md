@@ -11,12 +11,14 @@
 
 ## ✨ 核心特性
 
+- 😉 结构简单，减少心智，方便维护
 - ⚡ 基于 Next.js 14，极速加载体验
 - 🎨 使用 Tailwind CSS，快速构建响应式UI
 - 🖼️ 集成 Framer Motion，带来流畅的动画效果
 - 📚 使用 Contentlayer，轻松管理mdx内容
 - 🌙 支持暗黑模式，保护眼睛，丝滑切换
 - 📱 响应式设计，适配移动端
+- ⚠️ husky git hook限制，防止错误部署
 - 🤖 docker + github action 自动部署到云服务器，省时省力
 
 # 🏠 项目结构

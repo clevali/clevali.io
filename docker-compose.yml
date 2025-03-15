@@ -1,0 +1,27 @@
+
+services:
+  my-blog:
+    image: crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest # 替换为你的Next.js镜像名
+    restart: always
+    container_name:  my-blog
+    networks:
+      - blog-network
+
+  nginx:
+    image: nginx:alpine 
+    restart: always
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - my-blog
+    networks:
+      - blog-network
+    volumes:
+    - /ssl:/ssl # 宿主机证书路径:容器内路径
+    - /app/blog/nginx.conf:/etc/nginx/nginx.conf # 宿主机证书路径:容器内路径
+
+networks:
+  blog-network:
+    driver: bridge

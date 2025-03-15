@@ -18,36 +18,45 @@ jobs:
       # 制作docker镜像并推送到阿里云容器镜像服务
       - name: build and push docker image
         run: |
-          echo ${{ secrets.ALIYUN_DOCKER_PASSWORD }} | docker login crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com --username ${{ secrets.ALIYUN_DOCKER_USERNAME }} --password-stdin
+          echo ${{ secrets.ALIYUN_DOCKER_PASSWORD }} | docker login xxx.com --username ${{ secrets.ALIYUN_DOCKER_USERNAME }} --password-stdin
           docker image build -t blog:latest .
-          docker tag blog crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
-          docker push crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
+          docker tag blog xxx.com/xxx/blog:latest
+          docker push xxx.com/xxx/blog:latest
           docker logout
-      # 登录远程服务器，拉取镜像，制作并重启容器
-      # https://github.com/marketplace/actions/remote-ssh-commands
+
+       # 创建文件夹
+      - name: Copy docker-compose file to server
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            mkdir -p /app/blog
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.PASSWORD }}
+          
+       # 复制docker-compose.yml和nginx到服务器
+      - name: Copy files to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          source: "docker-compose.yml"
+          target: "/app/blog"
+      # 登录远程服务器，使用docker-compose启动服务
       - name: ssh remote deploy
         uses: fifsky/ssh-action@master
         with:
           command: |
-            cd /
+            cd /app/blog
             echo -e "1.docker login start==>"
-             echo ${{ secrets.ALIYUN_DOCKER_PASSWORD }} | docker login crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com --username ${{ secrets.ALIYUN_DOCKER_USERNAME }} --password-stdin
-            echo -e "2.docker stop blog container==>"
-            docker container stop clevali-blog
-
-            echo -e "3.docker conatainer rm==>"
-            docker container rm clevali-blog
-
-            echo -e "4.docker image rm==>"
-            docker image rm crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest -f
-
-            echo -e "5.docker pull==>"
-            docker pull crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
-
-            echo -e "6.docker container create and start==>"
-            docker container run -d -p 3000:3000 --name clevali-blog crpi-4zod4anhv1mi70d8.cn-hangzhou.personal.cr.aliyuncs.com/clevali/blog:latest
-
-            echo -e "7.docker logout==>"
+            echo ${{ secrets.ALIYUN_DOCKER_PASSWORD }} | docker login xxx.com --username ${{ secrets.ALIYUN_DOCKER_USERNAME }} --password-stdin
+            
+            echo -e "2.delete old images and restart containers==>"
+            docker compose down --rmi all
+            docker compose up -d
+            
+            echo -e "3.docker logout==>"
             docker logout
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
