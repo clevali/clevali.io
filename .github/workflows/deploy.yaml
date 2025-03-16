@@ -41,7 +41,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-          source: "docker-compose.yml"
+          source: "docker-compose.yml,nginx/nginx.conf"
           target: "/app/blog"
       # 登录远程服务器，使用docker-compose启动服务
       - name: ssh remote deploy

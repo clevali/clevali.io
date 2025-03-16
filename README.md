@@ -5,14 +5,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/clevali/clevali.io/pulls)
 
-**现代极简主义者的终极博客模板** | 性能优秀 ⚡ | 轻量级/无需繁杂配置 🚀
+**现代极简主义者的终极博客模板** | Lighthouse表现优秀 ⚡ | 轻量级/无需繁杂配置 🚀
 
 
 
 ## ✨ 核心特性
 
 - 😉 结构简单，减少心智，方便维护
-- ⚡ 基于 Next.js 14，极速加载体验
+- ⚡ 基于 Next.js 14，极速加载体验，SEO100%
 - 🎨 使用 Tailwind CSS，快速构建响应式UI
 - 🖼️ 集成 Framer Motion，带来流畅的动画效果
 - 📚 使用 Contentlayer，轻松管理mdx内容
@@ -20,6 +20,8 @@
 - 📱 响应式设计，适配移动端
 - ⚠️ husky git hook限制，防止错误部署
 - 🤖 docker + github action 自动部署到云服务器，省时省力
+  
+
 
 # 🏠 项目结构
 ````
