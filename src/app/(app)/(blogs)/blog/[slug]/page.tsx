@@ -16,7 +16,18 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   if (!blog) {
     return { title: "404 - Page Not Found" };
   }
-  return { title: blog.title };
+  return {
+    title: blog.title,
+    description: blog.description,
+    openGraph: {
+      publishedTime: blog.date,
+      tags: blog.tags,
+      authors: [blog.author],
+    },
+    alternates: {
+      canonical: `https://clevali.cn/blog/${blog.slug}`,
+    },
+  };
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {

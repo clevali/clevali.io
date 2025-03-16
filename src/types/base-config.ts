@@ -6,23 +6,34 @@ export interface BaseConfig {
   name: string;
   authorsCN: string;
   description: string;
-  openUrl: string;
   apologize: string;
   motto: string;
+  url: string;
   email: string;
   keywords: string[];
   authors: string;
   authorsUrl?: string;
+  openUrl: string;
   links: SocialItem[];
   navigationItems: navigationItem[];
   footerItems: navigationItem[];
+  metadataBase?: URL | string;
+  themeColors?: string | ThemeColor[];
+  defaultNextTheme?: string;
   icons: {
     icon: string;
     shortcut?: string;
     apple?: string;
   };
+
   locale: string;
+  moreItems: MoreItem;
 }
+export type AuthorsConfig = {
+  name: string;
+  url: string;
+  twitter?: string;
+};
 
 export type navigationItem = {
   title: string;
@@ -32,7 +43,10 @@ export type navigationItem = {
   >;
   menu?: boolean;
 };
-
+export type ThemeColor = {
+  media: string;
+  color: string;
+};
 export type SocialItem = {
   text: string;
   href: string;

@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+# Host
+Host: https://clevali.cn
+
+# Sitemaps
+Sitemap: https://clevali.cn/sitemap.xml

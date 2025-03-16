@@ -22,7 +22,7 @@ export const Blog = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (blog) => `/blogs/${blog.slug}`,
+      resolve: (blog) => `/blog/${blog.slug}`,
     },
 
     // 阅读时间

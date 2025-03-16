@@ -86,7 +86,7 @@ pnpm build
 
 ## ☁️ 部署
 
-[如何在利用github action + Docker 自动化部署nextjs个人网站](https://www.clevali.cn/blogs/blog-8)
+[如何在利用github action + Docker 自动化部署nextjs个人网站](https://www.clevali.cn/blog/blog-8)
 
 
 ## 📄  许可证

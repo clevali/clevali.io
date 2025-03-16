@@ -1,6 +1,9 @@
 import { BaseConfig, SocialItemType } from "@/types/base-config";
 import { Home, Inbox, Search } from "lucide-react";
-
+const url =
+  process.env.NODE_ENV === "production"
+    ? "https://clevali.cn"
+    : "http://localhost:3000";
 export const route = {
   home: "/",
   yearBlogs: "/yearBlogs",
@@ -14,9 +17,12 @@ export const baseConfig: BaseConfig = {
     "我会在这里记录我的成长，以及分享我收集到的一些资料总结等，努力 💪 成为一个好的工程师~",
   apologize: "",
   motto: "只要开始追赶，就已经走在胜利的路上",
+  url,
+  openUrl: "https://github.com/clevali/clevali.io",
+  // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+  metadataBase: url,
   keywords: ["clevali", "blog", "前端", "nextjs", "学习笔记", "程序员"],
   authors: "clevali",
-  openUrl: "https://github.com/clevali/clevali.io",
   email: "1454468023@qq.com",
   authorsCN: "两眼半",
   authorsUrl: "https://github.com/clevali",
@@ -46,6 +52,11 @@ export const baseConfig: BaseConfig = {
       type: SocialItemType.text,
     },
   ],
+  themeColors: [
+    { media: "(prefers-color-scheme: dark)", color: "#000212" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+  ],
+  defaultNextTheme: "system", // next-theme option: system | dark | light
   icons: {
     icon: "/favicon.ico",
     shortcut: "/logo.png",
@@ -56,6 +67,20 @@ export const baseConfig: BaseConfig = {
     { href: route.yearBlogs, title: "博客", icon: Inbox },
     { href: route.about, title: "关于我", icon: Search },
   ],
+
   footerItems: [{ href: "/", title: "首页" }],
+
   locale: "zh-CN",
+  moreItems: {
+    "/more": [
+      {
+        href: "/icon",
+        title: "图标库",
+      },
+      {
+        href: "/admin",
+        title: "管理",
+      },
+    ],
+  },
 };
