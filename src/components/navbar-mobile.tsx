@@ -1,12 +1,8 @@
 "use client";
 
 import * as React from "react";
-
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { MenuIcon } from "lucide-react";
-
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
@@ -16,13 +12,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
-// import { SLOGAN, WEBSITE } from "@/constants";
 import { cn } from "@/lib/utils";
 import { baseConfig } from "@/constant/base-config";
 import { useIsMount } from "@/hooks/use-is-mount";
-
-// import { navItems } from "./config";
+import MyLink from "./my-link";
 
 export const MobileNav = () => {
   const pathname = usePathname();
@@ -50,7 +43,7 @@ export const MobileNav = () => {
         </SheetHeader>
         <div className="grid gap-4 pt-8">
           {baseConfig.navigationItems.map((el) => (
-            <Link
+            <MyLink
               key={el.href}
               href={el.href}
               className={cn(
@@ -64,7 +57,7 @@ export const MobileNav = () => {
               }}
             >
               {el.title}
-            </Link>
+            </MyLink>
           ))}
         </div>
       </SheetContent>

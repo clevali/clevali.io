@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import { useTheme } from "next-themes";
 import { Button, ButtonProps } from "./ui/button";
@@ -7,6 +6,7 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { flushSync } from "react-dom";
 import { useIsMount } from "@/hooks/use-is-mount";
+
 export function ThemeSwitch({
   className,
   ...props
@@ -43,6 +43,7 @@ export function ThemeSwitch({
       variant="outline"
       ref={ref}
       id="airplane-mode"
+      aria-label="change theme"
       onClick={async (e) => {
         // 获取点击位置
         const x = e.clientX;

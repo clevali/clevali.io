@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { dayTz } from "@/lib/day-tz";
 import { Calendar, Clock8 } from "lucide-react";
 import Tag from "@/components/tag";
 import { Blog } from "contentlayer/generated";
+import MyLink from "@/components/my-link";
 export default function BLogList({ blogs }: { blogs: Blog[] }) {
   return (
     <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -13,7 +13,7 @@ export default function BLogList({ blogs }: { blogs: Blog[] }) {
             className="p-2 hover:shadow-lg hover:scale-105 cursor-pointer duration-500 z-10"
             key={blog._id}
           >
-            <Link href={blog.url} prefetch>
+            <MyLink href={blog.url} prefetch>
               <CardContent>
                 <h2 className="text-xl pb-2 pt-2">{blog.title}</h2>
                 <div className="secText">
@@ -42,7 +42,7 @@ export default function BLogList({ blogs }: { blogs: Blog[] }) {
                   </div>
                 </div>
               </CardContent>
-            </Link>
+            </MyLink>
           </Card>
         );
       })}

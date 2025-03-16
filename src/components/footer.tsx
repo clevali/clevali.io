@@ -1,9 +1,9 @@
 "use client";
 import { baseConfig } from "@/constant/base-config";
-import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 import { reverseRenderMontion } from "@/constant/common";
+import MyLink from "./my-link";
 
 const navigationItems = baseConfig.navigationItems;
 function NavLink({
@@ -14,12 +14,12 @@ function NavLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link
+    <MyLink
       href={href}
       className="transition hover:text-black dark:hover:text-white secText"
     >
       {children}
-    </Link>
+    </MyLink>
   );
 }
 

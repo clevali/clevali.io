@@ -1,9 +1,9 @@
 "use client";
 import { getOneSentenceAction, OneSentenceData } from "@/actions/hitokoto";
 import { CircleHelp } from "lucide-react";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import MyPopover from "./my-popover";
+import MyLink from "./my-link";
 
 const OneSentence = () => {
   const [state, setState] = useState<OneSentenceData | undefined>();
@@ -18,13 +18,13 @@ const OneSentence = () => {
         content={
           <div className="text-xs p-2 rounded-md duration-300 transition-all">
             文案能力接入了一言：
-            <Link
+            <MyLink
               className="font-bold"
               href="https://hitokoto.cn/"
               target="_blank"
             >
               https://hitokoto.cn/
-            </Link>
+            </MyLink>
           </div>
         }
       >

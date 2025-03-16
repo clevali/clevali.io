@@ -1,5 +1,4 @@
 import { baseConfig } from "@/constant/base-config";
-import Link from "next/link";
 import React from "react";
 import * as iconList from "@/assets/index";
 import { MyTooltip } from "./my-tootip";
@@ -9,6 +8,7 @@ import Image, { StaticImageData } from "next/image";
 import { makeBlurDataURL } from "@/lib/images";
 import { SocialItem, SocialItemType } from "@/types/base-config";
 import MyTextContainer from "./my-text-container";
+import MyLink from "./my-link";
 
 const imgConfig: Record<string, StaticImageData> = {
   wechat: WchatImg,
@@ -55,19 +55,20 @@ const Links = () => {
     const isLink = item.type === SocialItemType.link;
     return (
       <MyTooltip key={item.href} content={item.text}>
-        <Link
+        <MyLink
           href={item.href}
           target="_blank"
           onClick={(e) => {
             if (!isLink) e.preventDefault();
           }}
+          aria-label={`link to ${item.text}`}
         >
           {isLink ? (
             children
           ) : (
             <MyTextContainer text={item.href}>{children}</MyTextContainer>
           )}
-        </Link>
+        </MyLink>
       </MyTooltip>
     );
   }
@@ -95,6 +96,7 @@ const Links = () => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
           />
         }
+        ariaLabel="wechat"
       >
         {children}
       </MyPopover>

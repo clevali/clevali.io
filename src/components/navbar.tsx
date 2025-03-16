@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useScroll, useThrottle } from "ahooks";
 import { cn } from "@/lib/utils";
@@ -12,6 +11,7 @@ import { useIsMount } from "@/hooks/use-is-mount";
 import { Avatar } from "./avatar";
 import { GithubIcon } from "@/assets";
 import { Button } from "./ui/button";
+import MyLink from "./my-link";
 
 export const Navbar = () => {
   const scroll = useScroll(() => document);
@@ -56,7 +56,7 @@ export const Navbar = () => {
       )}
     >
       <div className="flex h-16 w-full items-center p-4 sm:p-8 sm:max-w-screen-md lg:max-w-screen-xl transition-all">
-        <Link
+        <MyLink
           href={route.home}
           className={cn("mr-4 hidden sm:flex sm:items-center")}
           aria-label={baseConfig.authors}
@@ -65,10 +65,10 @@ export const Navbar = () => {
           <span className="ml-2 text-base font-semibold text-primary">
             {baseConfig.authors}
           </span>
-        </Link>
+        </MyLink>
         <div className="mr-8 hidden h-16 flex-1 items-center justify-end text-base font-medium sm:flex">
           {baseConfig.navigationItems.map((el) => (
-            <Link
+            <MyLink
               href={el.href}
               key={el.href}
               className={cn(
@@ -78,20 +78,21 @@ export const Navbar = () => {
               )}
             >
               {el.title}
-            </Link>
+            </MyLink>
           ))}
         </div>
         <MobileNav />
         <div className="flex-1 flex justify-center sm:hidden">
-          <Link href={route.home} aria-label={baseConfig.authors}>
+          <MyLink href={route.home} aria-label={baseConfig.authors}>
             <Avatar />
-          </Link>
+          </MyLink>
         </div>
 
         <div className="flex items-center justify-end gap-2 sm:flex-none">
           <Button
             variant="outline"
             className="px-3"
+            aria-label="GitHub"
             onClick={() => {
               window.open(baseConfig.openUrl, "_blank");
             }}

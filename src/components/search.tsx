@@ -18,7 +18,7 @@ const Search = ({
         placeholder="输入关键词搜索"
         {...props}
       />
-      <Button type="submit">
+      <Button type="submit" aria-label="search">
         <SeachIcon />
       </Button>
     </div>

@@ -1,8 +1,8 @@
-/* 字体感谢大佬  https://hsiaofeng.com/archives/224.html */
-/* @import url("https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css");
+@import "lxgw-wenkai-screen-webfont/style.css";
 body {
   font-family: "LXGW WenKai Screen", sans-serif;
-} */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -6,7 +6,7 @@ const nextConfig = {
   output: "standalone",
   images: {
     // 这里可以改成你的cdn域名
-    domains: ["gcore.jsdelivr.net"],
+    domains: ["gcore.jsdelivr.net", "cdn.jsdelivr.net"],
   },
 };
 
