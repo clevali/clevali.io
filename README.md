@@ -57,6 +57,9 @@ clevali.io/
 ├── postcss.config.mjs           # PostCSS配置
 └── README.md                    # 项目说明文档
 ````
+ ⚡ Lighthouse
+ 
+![image](https://github.com/user-attachments/assets/c17b526e-ba37-44fd-98ca-575d8a794346)
 
 ## 🚀 快速启动
 
