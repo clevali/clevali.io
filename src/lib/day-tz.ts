@@ -9,4 +9,4 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Shanghai");
 dayjs.extend(quarterOfYear);
-export const dayTz = dayjs;
+export const dayTz = dayjs.tz;
