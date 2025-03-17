@@ -17,7 +17,7 @@ export interface BaseConfig {
   links: SocialItem[];
   navigationItems: navigationItem[];
   footerItems: navigationItem[];
-  metadataBase?: URL | string;
+  metadataBase: URL;
   themeColors?: string | ThemeColor[];
   defaultNextTheme?: string;
   icons: {

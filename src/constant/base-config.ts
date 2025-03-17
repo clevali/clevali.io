@@ -20,7 +20,7 @@ export const baseConfig: BaseConfig = {
   url,
   openUrl: "https://github.com/clevali/clevali.io",
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-  metadataBase: url,
+  metadataBase: new URL(url),
   keywords: ["clevali", "blog", "前端", "nextjs", "学习笔记", "程序员"],
   authors: "clevali",
   email: "1454468023@qq.com",
