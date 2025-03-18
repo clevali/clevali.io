@@ -18,8 +18,8 @@ const Img = ({ className, ...props }: ImgHTMLAttributes<HTMLImageElement>) => {
       <Image
         className={cn(
           className,
-          "border-solid border-gray-200 border-2 rounded-lg dark:border-gray-200",
-          isBanner ? "w-full h-auto" : "max-h-[300px]"
+          "border-solid border-gray-200 border-2 rounded-lg dark:border-gray-200 w-full",
+          isBanner ? "h-auto" : "max-h-[300px] w-auto"
         )}
         width={0}
         height={0}
