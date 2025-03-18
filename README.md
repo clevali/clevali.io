@@ -58,7 +58,7 @@ clevali.io/
 └── README.md                    # 项目说明文档
 ````
  ⚡ Lighthouse
- 
+ 如果刨去第三方字体，性能会更佳~
 ![image](https://github.com/user-attachments/assets/c17b526e-ba37-44fd-98ca-575d8a794346)
 
 ## 🚀 快速启动
